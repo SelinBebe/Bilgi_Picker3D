@@ -1,8 +1,6 @@
-namespace Interfaces
+public enum GameStates
 {
-    public interface ICommand
-    {
-        public void Execute();
-        public void Execute(int value);
-    }
+    Idle,
+    Moving,
+    Final
 }
