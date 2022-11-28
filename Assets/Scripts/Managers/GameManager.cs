@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
  
  private void UnSubscribeEvents()
  {
-  CoreGameSignals.Instance.onChangeGameState += OnChangeGameState;
+  CoreGameSignals.Instance.onChangeGameState -= OnChangeGameState;
  }
 
  private void OnDisable()
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
  }
 
  //[Button (name ="Change State")] 
- //some asset named ODIN 
+
  private void OnChangeGameState(GameStates state)
  {
   states = state;
