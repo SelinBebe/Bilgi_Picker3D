@@ -1,59 +1,91 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Enums;
 using Signals;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+namespace Managers
 {
-    private void OnEnavle()
+    public class UIManager : MonoBehaviour
     {
-        SubscribeEvents();
-    }
+        #region Self Variables
 
-    private void SubscribeEvents()
-    {
-        CoreGameSignals.Instance.onLevelSuccessful += OnLevelSuccessful;
-        CoreGameSignals.Instance.onLevelFailed += OnLevelFailed;
-        CoreGameSignals.Instance.onReset += OnReset;
-    }
+        #region Public Variables
 
-    private void UnSubscribeEvents()
-    {
-        CoreGameSignals.Instance.onLevelSuccessful -= OnLevelSuccessful;
-        CoreGameSignals.Instance.onLevelFailed -= OnLevelFailed;
-        CoreGameSignals.Instance.onReset -= OnReset;
-    }
+        #endregion
 
-    private void OnDisable()
-    {
-        UnSubscribeEvents;
-    }
+        #region Serialized Variables
 
-    private void OnLevelSuccessful()
-    {
-        
-    }
+        #endregion
 
-    public NextLevel()
-    {
-        
-    }
+        #region Private Variables
 
-    public RestartLevel()
-    {
-        
-    }
+        #endregion
 
-    public Play()
-    {
-        
-    }
+        #endregion
 
-    private void onReset()
-    {
-        CoreUISignals.Instance.onCloseAlPanels?.Invoke();
-        
+        private void OnEnable()
+        {
+            SubscribeEvents();
+        }
+
+        private void SubscribeEvents()
+        {
+            CoreGameSignals.Instance.onLevelInitialize -= OnLevelInitialize;
+            CoreGameSignals.Instance.onLevelSuccessful += OnLevelSuccessful;
+            CoreGameSignals.Instance.onLevelFailed += OnLevelFailed;
+            CoreGameSignals.Instance.onReset += OnReset;
+        }
+
+        private void UnSubscribeEvents()
+        {
+            CoreGameSignals.Instance.onLevelInitialize -= OnLevelInitialize;
+            CoreGameSignals.Instance.onLevelSuccessful -= OnLevelSuccessful;
+            CoreGameSignals.Instance.onLevelFailed -= OnLevelFailed;
+            CoreGameSignals.Instance.onReset -= OnReset;
+        }
+
+        private void OnDisable()
+        {
+            UnSubscribeEvents();
+        }
+
+        private void OnLevelInitialize(int levelValue)
+        {
+            CoreUISignals.Instance.onOpenPanel?.Invoke(UIPanelTypes.Level, 0);
+            UISignals.Instance.onSetNewLevelValue?.Invoke(levelValue);
+        }
+
+        private void OnLevelSuccessful()
+        {
+            CoreUISignals.Instance.onOpenPanel?.Invoke(UIPanelTypes.Win, 2);
+        }
+
+        private void OnLevelFailed()
+        {
+            CoreUISignals.Instance.onOpenPanel?.Invoke(UIPanelTypes.Fail, 2);
+        }
+
+        public void NextLevel()
+        {
+            CoreGameSignals.Instance.onNextLevel?.Invoke();
+            CoreGameSignals.Instance.onReset?.Invoke();
+        }
+
+        public void RestartLevel()
+        {
+            CoreGameSignals.Instance.onRestartLevel?.Invoke();
+            CoreGameSignals.Instance.onReset?.Invoke();
+        }
+
+        public void Play()
+        {
+            CoreGameSignals.Instance.onPlay?.Invoke();
+            CoreUISignals.Instance.onClosePanel?.Invoke(1);
+        }
+
+        private void OnReset()
+        {
+            CoreUISignals.Instance.onCloseAllPanels?.Invoke();
+            CoreUISignals.Instance.onOpenPanel?.Invoke(UIPanelTypes.Start, 1);
+        }
     }
-    
 }

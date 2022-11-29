@@ -1,49 +1,49 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Enums;
+using Signals;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
- #region Self Variables
+    #region Self Variables
 
- #region Serialized Variables
+    #region Serialized Variables
 
- [SerializeField] private GameStates states; 
- 
- #endregion
+    [SerializeField] private GameStates states;
 
- #endregion
+    #endregion
 
- private void Awake()
- {
-  Application.targetFrameRate = 60;
- }
+    #endregion
 
- private void OnEnable()
- {
-  SubscribeEvents();
- }
 
- private void SubscribeEvents()
- {
-  CoreGameSignals.Instance.onChangeGameState += OnChangeGameState;
- }
- 
- private void UnSubscribeEvents()
- {
-  CoreGameSignals.Instance.onChangeGameState -= OnChangeGameState;
- }
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
 
- private void OnDisable()
- {
-  UnSubscribeEvents();
- }
+    private void OnEnable()
+    {
+        SubscribeEvents();
+    }
 
- //[Button (name ="Change State")] 
+    private void SubscribeEvents()
+    {
+        CoreGameSignals.Instance.onChangeGameState += OnChangeGameState;
+    }
 
- private void OnChangeGameState(GameStates state)
- {
-  states = state;
- }
+    private void UnsubscribeEvents()
+    {
+        CoreGameSignals.Instance.onChangeGameState -= OnChangeGameState;
+    }
+
+    private void OnDisable()
+    {
+        UnsubscribeEvents();
+    }
+
+    //[Button("Change State")]
+    private void OnChangeGameState(GameStates state)
+    {
+        states = state;
+    }
 }
