@@ -88,7 +88,8 @@ namespace Managers
 
         private void Start()
         {
-            _levelLoaderCommand.Execute(levelID);
+            CoreGameSignals.Instance.onLevelInitialize?.Invoke(levelID);
+            CoreUISignals.Instance.onOpenPanel?.Invoke(Enums.UIPanelTypes.Start, 1);
         }
 
         private void OnNextLevel()

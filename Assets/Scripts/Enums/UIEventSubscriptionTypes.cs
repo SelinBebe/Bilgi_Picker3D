@@ -4,6 +4,6 @@
     {
         OnPlay,
         OnNextLevel,
-        RestartLevel
+        OnRestartLevel
     }
 }
