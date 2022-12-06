@@ -6,7 +6,7 @@ namespace Data.ValueObjects
 {
 
      [Serializable]
-     public class InputData
+     public struct InputData
      {
           public float HorizontalInputSpeed; // = 1.2f;
           public float2 ClampValues; // = new float2(x:-3, y:3);
