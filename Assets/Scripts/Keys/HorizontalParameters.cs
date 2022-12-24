@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class HorizontalParameters : MonoBehaviour
+namespace Keys
 {
-    // Start is called before the first frame update
-    void Start()
+    public struct HorizontalnputParams
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public float HorizontalInputValue;
+        public float HorizontalInputClampNegativeSide;
+        public float HorizontalInputClampPositiveSide;
     }
 }
