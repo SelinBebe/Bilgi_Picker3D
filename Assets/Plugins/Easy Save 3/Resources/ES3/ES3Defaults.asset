@@ -31,11 +31,11 @@ MonoBehaviour:
     assemblyNames:
     - Assembly-CSharp-firstpass
     - Assembly-CSharp
+    - Cinemachine
     - Sirenix.OdinInspector.CompatibilityLayer
     - RuntimeTestAssembly
     - NonConvexCollider
     - NonConvexColliderRuntimeAPI
-    - Cinemachine
     - Sirenix.OdinInspector.CompatibilityLayer.Editor
     - NonConvexEditor
     - Sirenix.OdinInspector.Modules.UnityMathematics

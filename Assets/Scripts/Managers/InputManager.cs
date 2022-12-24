@@ -55,12 +55,16 @@ namespace Managers
 
         private void SubscribeEvents()
         {
+            InputSignals.Instance.onEnableInput += OnEnableInput;
+            InputSignals.Instance.onDisableInput += OnDisableInput;
             CoreGameSignals.Instance.onReset += OnReset;
             CoreGameSignals.Instance.onPlay += OnPlay;
         }
 
         private void UnSubscribeEvents()
         {
+            InputSignals.Instance.onEnableInput -= OnEnableInput;
+            InputSignals.Instance.onDisableInput -= OnDisableInput;
             CoreGameSignals.Instance.onReset -= OnReset;
             CoreGameSignals.Instance.onPlay -= OnPlay;
         }
@@ -81,16 +85,19 @@ namespace Managers
                 _isTouching = false;
 
                 InputSignals.Instance.onInputReleased?.Invoke();
+                //Debug.LogWarning("Executed ---> onInputReleased");
             }
 
             if (Input.GetMouseButtonDown(0) && !IsPointerOverUIElement())
             {
                 _isTouching = true;
                 InputSignals.Instance.onInputTaken?.Invoke();
+                //Debug.LogWarning("Executed ---> onInputTaken");
                 if (!_isFirstTimeTouchTaken)
                 {
                     _isFirstTimeTouchTaken = true;
                     InputSignals.Instance.onFirstTimeTouchTaken?.Invoke();
+                    //Debug.LogWarning("Executed ---> onFirstTimeTouchTaken");
                 }
 
                 _mousePosition = Input.mousePosition;
@@ -102,7 +109,7 @@ namespace Managers
                 {
                     if (_mousePosition != null)
                     {
-                        Vector2 mouseDeltaPos = (Vector2) Input.mousePosition - _mousePosition.Value;
+                        Vector2 mouseDeltaPos = (Vector2)Input.mousePosition - _mousePosition.Value;
 
 
                         if (mouseDeltaPos.x > _data.HorizontalInputSpeed)
@@ -115,12 +122,13 @@ namespace Managers
 
                         _mousePosition = Input.mousePosition;
 
-                         InputSignals.Instance.onInputDragged?.Invoke(new HorizontalInputParams()
-                         {
-                             HorizontalInputValue = _moveVector.x,
-                             HorizontalInputClampNegativeSide = InputData.Data.HorizontalInputClampNegativeSide,
-                             HorizontalInputClampPositiveSide = InputData.Data.HorizontalInputClampPositiveSide
-                         });
+                        InputSignals.Instance.onInputDragged?.Invoke(new HorizontalnputParams()
+                        {
+                            HorizontalInputValue = _moveVector.x,
+                            HorizontalInputClampNegativeSide = _data.ClampValues.x,
+                            HorizontalInputClampPositiveSide = _data.ClampValues.y
+                        });
+                        //Debug.LogWarning($"Executed ---> onInputDragged{_moveVector.x}");
                     }
                 }
             }
@@ -131,6 +139,15 @@ namespace Managers
             _isAvailableForTouch = true;
         }
 
+        private void OnEnableInput()
+        {
+            _isAvailableForTouch = true;
+        }
+
+        private void OnDisableInput()
+        {
+            _isAvailableForTouch = false;
+        }
 
         private bool IsPointerOverUIElement()
         {

@@ -466,7 +466,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7282406559574445234}
-  - component: {fileID: 8874920410518713203}
+  - component: {fileID: 9124551926803334938}
   m_Layer: 5
   m_Name: LevelPanel
   m_TagString: Untagged
@@ -494,7 +494,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8874920410518713203
+--- !u!114 &9124551926803334938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -509,7 +509,10 @@ MonoBehaviour:
   levelTexts:
   - {fileID: 7282406559161290254}
   - {fileID: 7702745728444136079}
-  stageImage: []
+  stageImages:
+  - {fileID: 4837950001364511120}
+  - {fileID: 5729893160850888512}
+  - {fileID: 7480261392054910708}
 --- !u!1 &7282406559960353193
 GameObject:
   m_ObjectHideFlags: 0
