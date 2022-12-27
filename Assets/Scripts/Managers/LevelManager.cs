@@ -1,4 +1,5 @@
 using Commands;
+
 using Data.UnityObjects;
 using Signals;
 using UnityEngine;
@@ -71,14 +72,17 @@ namespace Managers
             CoreGameSignals.Instance.onClearActiveLevel += _levelDestroyerCommand.Execute;
             CoreGameSignals.Instance.onNextLevel += OnNextLevel;
             CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
+            CoreGameSignals.Instance.onGetLevelValue += OnGetLevelValue;
         }
 
         private void UnSubscribeEvents()
         {
-            CoreGameSignals.Instance.onLevelInitialize -= _levelLoaderCommand.Execute; ;
+            CoreGameSignals.Instance.onLevelInitialize -= _levelLoaderCommand.Execute;
+            ;
             CoreGameSignals.Instance.onClearActiveLevel -= _levelDestroyerCommand.Execute;
             CoreGameSignals.Instance.onNextLevel -= OnNextLevel;
             CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
+            CoreGameSignals.Instance.onGetLevelValue -= OnGetLevelValue;
         }
 
         private void OnDisable()
@@ -88,7 +92,7 @@ namespace Managers
 
         private void Start()
         {
-            CoreGameSignals.Instance.onLevelInitialize?.Invoke(levelID);
+            CoreGameSignals.Instance.onLevelInitialize?.Invoke(levelID % totalLevelCount);
             CoreUISignals.Instance.onOpenPanel?.Invoke(Enums.UIPanelTypes.Start, 1);
         }
 
@@ -97,14 +101,19 @@ namespace Managers
             levelID++;
             CoreGameSignals.Instance.onClearActiveLevel?.Invoke();
             CoreGameSignals.Instance.onReset?.Invoke();
-            CoreGameSignals.Instance.onLevelInitialize?.Invoke(levelID);
+            CoreGameSignals.Instance.onLevelInitialize?.Invoke(levelID % totalLevelCount);
         }
 
         private void OnRestartLevel()
         {
             CoreGameSignals.Instance.onClearActiveLevel?.Invoke();
             CoreGameSignals.Instance.onReset?.Invoke();
-            CoreGameSignals.Instance.onLevelInitialize?.Invoke(levelID);
+            CoreGameSignals.Instance.onLevelInitialize?.Invoke(levelID % totalLevelCount);
+        }
+
+        private int OnGetLevelValue()
+        {
+            return levelID % totalLevelCount;
         }
     }
 }

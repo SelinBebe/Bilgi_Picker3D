@@ -205,6 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 1097350029117394564}
   renderer: {fileID: 0}
+  scaleText: {fileID: 0}
 --- !u!1001 &997364297506865152
 PrefabInstance:
   m_ObjectHideFlags: 0

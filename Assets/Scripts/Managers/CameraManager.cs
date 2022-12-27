@@ -36,13 +36,14 @@ namespace Managers
 
         private void OnSetCameraTarget()
         {
+            Debug.LogWarning("fhjghjgkjgj");
             virtualCamera.Follow = FindObjectOfType<PlayerManager>().transform;
         }
 
         private void UnSubscribeEvents()
         {
             CameraSignals.Instance.onSetCameraTarget -= OnSetCameraTarget;
-            CoreGameSignals.Instance.onReset += OnReset;
+            CoreGameSignals.Instance.onReset -= OnReset;
         }
 
         private void OnDisable()
