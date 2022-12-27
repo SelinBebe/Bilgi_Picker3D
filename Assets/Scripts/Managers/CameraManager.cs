@@ -36,7 +36,7 @@ namespace Managers
 
         private void OnSetCameraTarget()
         {
-            Debug.LogWarning("fhjghjgkjgj");
+          
             virtualCamera.Follow = FindObjectOfType<PlayerManager>().transform;
         }
 

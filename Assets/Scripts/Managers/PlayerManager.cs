@@ -138,7 +138,7 @@ namespace Managers
             StageValue = (byte) ++value;
             movementController.IsReadyToPlay(true);
             meshController.ScaleUpPlayer();
-            meshController.ShowUpText();
+            //meshController.ShowUpText();
             meshController.PlayConfettiParticle();
         }
 

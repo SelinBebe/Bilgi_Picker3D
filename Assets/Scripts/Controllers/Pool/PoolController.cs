@@ -57,6 +57,7 @@ namespace Controllers.Pool
         private void OnActivateTweens(int stageValue)
         {
             if (stageValue != stageID) return;
+            Debug.Log("aboooo");
             foreach (var tween in tweens)
             {
                 tween.DOPlay();

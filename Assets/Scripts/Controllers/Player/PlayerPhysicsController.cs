@@ -24,6 +24,7 @@ namespace Controllers.Player
         {
             if (other.CompareTag("StageArea"))
             {
+                Debug.Log("yeyyy");
                 manager.ForceCommand.Execute();
                 CoreGameSignals.Instance.onStageAreaEntered?.Invoke();
                 InputSignals.Instance.onDisableInput?.Invoke();
