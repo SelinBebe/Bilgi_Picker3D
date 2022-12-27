@@ -2554,7 +2554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4027520978237220144}
   - component: {fileID: 6296851271180745564}
-  - component: {fileID: 4813441044872233773}
+  - component: {fileID: 4883952218701597088}
   m_Layer: 0
   m_Name: Physics
   m_TagString: PoolArea
@@ -2589,7 +2589,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.5085816, z: 1}
   m_Center: {x: 0, y: 0.7542908, z: 0}
---- !u!114 &4813441044872233773
+--- !u!114 &4883952218701597088
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2598,12 +2598,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5864076620977841907}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49ba6de3b1fb343e6ad61dd7c1b5c6aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 4dba7833a4cb65745b60e9e59d0511bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tweens:
-  - {fileID: 9184225053601131155}
   - {fileID: 4412717554545556511}
+  - {fileID: 9184225053601131155}
   - {fileID: 2519405734463406150}
   poolText: {fileID: 1819977566778375030}
   stageID: 0
@@ -4279,7 +4279,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2524076245017955669, guid: 782ebb6cd8ca641d0b561b7c9d765c96, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4323,9 +4323,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 10 / 10
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 782ebb6cd8ca641d0b561b7c9d765c96, type: 2}
-  m_sharedMaterial: {fileID: 2524076245017955669, guid: 782ebb6cd8ca641d0b561b7c9d765c96,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

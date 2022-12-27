@@ -139,6 +139,7 @@ namespace Managers
             movementController.IsReadyToPlay(true);
             meshController.ScaleUpPlayer();
             meshController.ShowUpText();
+            meshController.PlayConfettiParticle();
         }
 
         private void OnFinishAreaEntered()
